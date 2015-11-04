@@ -52,7 +52,6 @@ infrastructures:
         - APP_BRANCH: {APP_BRANCH}
 
     register_instance:
-        ready: role.demo_app
         resource: register_lb
         params:
             load-balancer-name: my-demo-load-balancer-{INF_VERSION}
