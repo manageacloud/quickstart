@@ -19,12 +19,12 @@ resources:
             --load-balancer-name infrastructure.param.name
             --listeners infrastructure.param.listeners
             --availability-zones infrastructure.param.availability-zones
-            --region infrastructure.param.name
+            --region infrastructure.param.region
 
         destroy bash:
             aws elb delete-load-balancer
                 --load-balancer-name infrastructure.param.name
-                --region infrastructure.param.name
+                --region infrastructure.param.region
 
     register_lb:
         create bash:
