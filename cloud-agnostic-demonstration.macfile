@@ -6,7 +6,7 @@ version: 2.0
 actions:
     set_private_key:
         bash: |
-            cat >/tmp/privKey &lt;&lt;EOL
+            cat >/tmp/privKey <<EOL
             resource.ssh_pair.json.KeyMaterial
             EOL
             chmod 600 /tmp/privKey
