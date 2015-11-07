@@ -12,7 +12,7 @@ actions:
             chmod 600 /tmp/privkey
 
     bootstrap:
-        bash: "ssh -o StrictHostKeyChecking=no ubuntu@action.get_public_ip.text.regex(\"PublicIp\": \"([0-9\\.]+)\") -i /tmp/privkey 'sudo apt-get update && sudo apt-get install apache2 -y'"
+        bash: "ssh -o StrictHostKeyChecking=no ubuntu@action.get_public_ip.text.regex(\"PublicIp\": \"([0-9\\.]+)\") -i /tmp/privkey 'sleep 20 && sudo apt-get update && sudo apt-get install apache2 -y'"
 
     get_public_ip:
         bash: aws ec2 describe-instances --instance-ids resource.my_instance.json.Instances.0.InstanceId
