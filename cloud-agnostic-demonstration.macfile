@@ -6,13 +6,13 @@ version: 2.0
 actions:
     set_private_key:
         bash: |
-            cat >/tmp/privKey <<EOL
+            cat >/tmp/privkey <<EOL
             resource.ssh_pair.json.KeyMaterial
             EOL
-            chmod 600 /tmp/privKey
+            chmod 600 /tmp/privkey
 
     bootstrap:
-        bash: "ssh ubuntu@action.get_public_ip.text.regex(\"PublicIp\": \"([0-9\\.]+)\") -i /tmp/privkey 'sudo apt-get update && sudo apt-get install apache2 -y'"
+        bash: "ssh -o StrictHostKeyChecking=no ubuntu@action.get_public_ip.text.regex(\"PublicIp\": \"([0-9\\.]+)\") -i /tmp/privkey 'sudo apt-get update && sudo apt-get install apache2 -y'"
 
     get_public_ip:
         bash: aws ec2 describe-instances --instance-ids resource.my_instance.json.Instances.0.InstanceId
