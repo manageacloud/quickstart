@@ -38,7 +38,7 @@ infrastructures:
         params:
             name: my-demo-load-balancer-{INF_VERSION}
             listeners: Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80
-            availability-zones: us-east-1b us-east-1c us-east-1d us-east-1e
+            availability-zones: us-east-1b us-east-1c
             region: us-east-1
 
     demo_application_instance:
