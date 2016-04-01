@@ -31,6 +31,7 @@ resources:
             aws elb register-instances-with-load-balancer
                 --load-balancer-name infrastructure.param.load-balancer-name
                 --instances infrastructure.param.instances
+                --region infrastructure.param.region
 
 infrastructures:
     load balancer 01:
@@ -38,7 +39,7 @@ infrastructures:
         params:
             name: my-demo-load-balancer-{INF_VERSION}
             listeners: Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80
-            availability-zones: us-east-1b us-east-1c us-east-1d us-east-1e
+            availability-zones: us-east-1b us-east-1c
             region: us-east-1
 
     demo_application_instance:
@@ -56,3 +57,4 @@ infrastructures:
         params:
             load-balancer-name: my-demo-load-balancer-{INF_VERSION}
             instances: role.demo_app.get_id
+            region: us-east-1
